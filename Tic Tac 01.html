@@ -1,0 +1,128 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    :root {
+      --borderColor : #001db5;
+      --borderWidth : 1vw;
+    }
+   
+    * {
+      border: 0px;
+      margin: 0px;
+      box-sizing: border-box;
+      font-size: 8vw;
+      font-weight: 700;
+      color: #e2e2e2;
+    } 
+    #body{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border: 0px solid red;
+    }
+    #game_container{
+      height: 90vw;
+      width: 90vw;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap :0px;
+      border: 0px solid red;
+    }
+    .cell_size{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0px solid red;
+    }
+    #cell_1{
+      border-bottom: var(--borderWidth) solid var(--borderColor);
+      border-right: var(--borderWidth) solid var(--borderColor);
+      translate: -34vw -30vw;
+      transition: all .8s ease;
+    }
+    #cell_2{
+      border-bottom: var(--borderWidth) solid var(--borderColor);
+      translate: 0vw -82vw ;
+      transition: all .4s ease;
+   /* position: relative;
+      bottom: 42vh; */
+    }
+    #cell_3{
+      border-bottom: var(--borderWidth) solid var(--borderColor);
+      border-left: var(--borderWidth) solid var(--borderColor);
+      translate: 34vw -30vw;
+      transition: all .8s ease;
+    }
+    #cell_4{
+      border-right: var(--borderWidth) solid var(--borderColor);
+      translate: -34vw 0vw;
+      transition: all .4s ease;
+    }
+    
+    #cell_6{
+      border-left: var(--borderWidth) solid var(--borderColor);
+      translate: 34vw 0vw;
+      transition: all .4s ease;
+    }
+    
+     #cell_7{
+      border-top: var(--borderWidth) solid var(--borderColor);
+      border-right: var(--borderWidth) solid var(--borderColor);
+      translate: -34vw 30vw;
+      transition: all .6s ease;
+    }
+    
+    #cell_8{
+      border-top: var(--borderWidth) solid var(--borderColor);
+      translate: 0vw 82vw ;
+      transition: all .4s ease;
+    }
+    #cell_9{
+      border-top: var(--borderWidth) solid var(--borderColor);
+      border-left: var(--borderWidth) solid var(--borderColor);
+      translate: 34vw 30vw;
+      transition: all .4s ease;
+    }
+ </style>
+<body>
+<div id="body">
+  <div id="game_container">
+    <div id="cell_1" class="cell_size">1</div>
+    <div id="cell_2" class="cell_size">2</div>
+    <div id="cell_3" class="cell_size">3</div>
+    <div id="cell_4" class="cell_size">4</div>
+    <div id="cell_5" class="cell_size">5</div>
+    <div id="cell_6" class="cell_size">6</div>
+    <div id="cell_7" class="cell_size">6</div>
+    <div id="cell_8" class="cell_size">6</div>
+    <div id="cell_9" class="cell_size">6</div>
+  </div>
+</div>  
+  <script> 
+    
+    window.onload = function () {
+      setTimeout(function() {
+        cell_1.style.translate = '0vw 0vw';
+        cell_2.style.translate = '0vw 0vw';
+        cell_3.style.translate = '0vw 0vw';
+        cell_4.style.translate = '0vw 0vw';
+        cell_6.style.translate = '0vw 0vw';
+        cell_7.style.translate = '0vw 0vw';
+        cell_8.style.translate = '0vw 0vw';
+        cell_9.style.translate = '0vw 0vw';
+      }, 100);
+    };
+  
+  </script>
+
+</body>
+
+</html>
