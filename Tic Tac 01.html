@@ -14,8 +14,6 @@
       border: 0px;
       margin: 0px;
       box-sizing: border-box;
-      font-size: 8vw;
-      font-weight: 700;
       color: #e2e2e2;
     } 
     #body{
@@ -35,23 +33,26 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap :0px;
       border: 0px solid red;
+      
     }
     .cell_size{
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 20vw;
+      font-weight: 400;
       border: 0px solid red;
     }
     #cell_1{
       border-bottom: var(--borderWidth) solid var(--borderColor);
       border-right: var(--borderWidth) solid var(--borderColor);
       translate: -34vw -30vw;
-      transition: all .8s ease;
+      transition: all .6s ease;
     }
     #cell_2{
       border-bottom: var(--borderWidth) solid var(--borderColor);
       translate: 0vw -82vw ;
-      transition: all .4s ease;
+      transition: all .3s ease;
    /* position: relative;
       bottom: 42vh; */
     }
@@ -59,7 +60,7 @@
       border-bottom: var(--borderWidth) solid var(--borderColor);
       border-left: var(--borderWidth) solid var(--borderColor);
       translate: 34vw -30vw;
-      transition: all .8s ease;
+      transition: all .7s ease;
     }
     #cell_4{
       border-right: var(--borderWidth) solid var(--borderColor);
@@ -70,40 +71,40 @@
     #cell_6{
       border-left: var(--borderWidth) solid var(--borderColor);
       translate: 34vw 0vw;
-      transition: all .4s ease;
+      transition: all .5s ease;
     }
     
      #cell_7{
       border-top: var(--borderWidth) solid var(--borderColor);
       border-right: var(--borderWidth) solid var(--borderColor);
       translate: -34vw 30vw;
-      transition: all .6s ease;
+      transition: all .9s ease;
     }
     
     #cell_8{
       border-top: var(--borderWidth) solid var(--borderColor);
       translate: 0vw 82vw ;
-      transition: all .4s ease;
+      transition: all .6s ease;
     }
     #cell_9{
       border-top: var(--borderWidth) solid var(--borderColor);
       border-left: var(--borderWidth) solid var(--borderColor);
       translate: 34vw 30vw;
-      transition: all .4s ease;
+      transition: all .8s ease;
     }
  </style>
 <body>
 <div id="body">
   <div id="game_container">
-    <div id="cell_1" class="cell_size">1</div>
-    <div id="cell_2" class="cell_size">2</div>
-    <div id="cell_3" class="cell_size">3</div>
-    <div id="cell_4" class="cell_size">4</div>
-    <div id="cell_5" class="cell_size">5</div>
-    <div id="cell_6" class="cell_size">6</div>
-    <div id="cell_7" class="cell_size">6</div>
-    <div id="cell_8" class="cell_size">6</div>
-    <div id="cell_9" class="cell_size">6</div>
+    <div id="cell_1" class="cell_size"></div>
+    <div id="cell_2" class="cell_size"></div>
+    <div id="cell_3" class="cell_size"></div>
+    <div id="cell_4" class="cell_size"></div>
+    <div id="cell_5" class="cell_size"></div>
+    <div id="cell_6" class="cell_size"></div>
+    <div id="cell_7" class="cell_size"></div>
+    <div id="cell_8" class="cell_size"></div>
+    <div id="cell_9" class="cell_size"></div>
   </div>
 </div>  
   <script> 
@@ -118,8 +119,51 @@
         cell_7.style.translate = '0vw 0vw';
         cell_8.style.translate = '0vw 0vw';
         cell_9.style.translate = '0vw 0vw';
-      }, 100);
+      }, 50);
     };
+  document.addEventListener('click', (event) => {
+    if(event.target.tagName === 'DIV' && event.target.id == 'cell_1'){
+      cell_1.innerHTML = 'o'
+      
+      cell_1.style.color = 'red';
+    }
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_2'){
+      cell_2.innerHTML = 'x'
+      cell_2.style.color = 'blue';
+    }
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_3'){
+      cell_3.innerHTML = 'o'
+      cell_3.style.color = 'red';
+    }
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_4'){
+      cell_4.innerHTML = 'x'
+      cell_4.style.color = 'blue';
+    }
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_5'){
+      cell_5.innerHTML = 'o'
+      cell_5.style.color = 'red';
+    }
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_6'){
+      cell_6.innerHTML = 'x'
+      cell_6.style.color = 'blue';
+    }
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_7'){
+      cell_7.innerHTML = 'o'
+      cell_7.style.color = 'red';
+    }
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_8'){
+      cell_8.innerHTML = 'x'
+      cell_8.style.color = 'blue';
+    }
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_9'){
+      cell_9.innerHTML = 'o'
+      cell_9.style.color = 'red';
+    }
+    
+    
+  })
+  
+  
   
   </script>
 
