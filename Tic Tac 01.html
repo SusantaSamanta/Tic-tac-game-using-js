@@ -156,14 +156,47 @@
       cell_8.style.color = 'blue';
     }
     else if(event.target.tagName === 'DIV' && event.target.id == 'cell_9'){
-      cell_9.innerHTML = 'o'
+      cell_9.innerHTML = pieceValue();
       cell_9.style.color = 'red';
     }
-    
-    
   })
   
-  
+  let o_or_x = 1;
+  let value,value_returnn;
+  let pieceNumberCount = 1;
+  const pieceValue = () => {
+    if(pieceNumberCount % 2 == 0 && pieceNumberCount < 10){
+      if(o_or_x % 2 == 0)
+        value = 'O'
+        //console.log('o');
+      else
+        value = 'X';
+        //console.log('x');
+      pieceNumberCount ++;
+      value_returnn = value;
+      return value;
+    }
+    else if(pieceNumberCount % 2 != 0 && pieceNumberCount < 10){
+      //console.log('ok '+pieceNumberCount);
+      if(o_or_x % 2 != 0)
+        value = 'O'
+       // console.log('o');
+      else
+        value = 'X'
+        //console.log('x');
+      pieceNumberCount ++;
+      value_returnn = value;
+      return value;
+    }
+    else {
+      console.log('end '+pieceNumberCount);
+      pieceNumberCount = 1;
+      o_or_x++;
+      return value_returnn;
+    }
+
+  }
+
   
   </script>
 
