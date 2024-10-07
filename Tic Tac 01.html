@@ -27,7 +27,7 @@
      /* justify-content: flex-start;*/
       align-items: center;
       overflow: hidden;
-      border: 1px solid red;
+      border: 0px solid red;
     }
     
     #playerNameContainer{
@@ -160,29 +160,44 @@
       }, 50);
     };
     
-  let cell_9_lock = 1, cell_8_lock = 1, cell_7_lock = 1, cell_6_lock = 1; 
+  let cell_1_lock = cell_2_lock = cell_3_lock = cell_4_lock = cell_5_lock = cell_6_lock = cell_7_lock = cell_8_lock = cell_9_lock = 1; 
   
   document.addEventListener('click', (event) => {
-    if(event.target.tagName === 'DIV' && event.target.id == 'cell_1'){
-      cell_1.innerHTML = 'o'
+    if(event.target.tagName === 'DIV' && event.target.id == 'cell_1' && cell_1_lock == 1){
       
-      cell_1.style.color = 'red';
+      cell_1_lock = 0;
+      let v1 = pieceValue1();
+      cell_1.innerHTML = v1.substring(0,1);
+      cell_1.style.color = v1.substring(1,v1.length);
     }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_2'){
-      cell_2.innerHTML = 'x'
-      cell_2.style.color = 'blue';
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_2' && cell_2_lock == 1){
+      
+      cell_2_lock = 0;
+      let v2 = pieceValue1();
+      cell_2.innerHTML = v2.substring(0,1);
+      cell_2.style.color = v2.substring(1,v2.length);
     }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_3'){
-      cell_3.innerHTML = 'o'
-      cell_3.style.color = 'red';
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_3' && cell_3_lock == 1){
+      
+      cell_3_lock = 0;
+      let v3 = pieceValue1();
+      cell_3.innerHTML = v3.substring(0,1);
+      cell_3.style.color = v3.substring(1,v3.length);
     }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_4'){
-      cell_4.innerHTML = 'x'
-      cell_4.style.color = 'blue';
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_4' && cell_4_lock == 1){
+      
+      cell_4_lock = 0;
+      let v4 = pieceValue1();
+      cell_4.innerHTML = v4.substring(0,1);
+      cell_4.style.color = v4.substring(1,v4.length);
+      
     }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_5'){
-      cell_5.innerHTML = 'o'
-      cell_5.style.color = 'red';
+    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_5' && cell_5_lock == 1){
+      
+      cell_5_lock = 0;
+      let v5 = pieceValue1();
+      cell_5.innerHTML = v5.substring(0,1);
+      cell_5.style.color = v5.substring(1,v5.length);
     }
     else if(event.target.tagName === 'DIV' && event.target.id == 'cell_6' && cell_6_lock == 1){
       
