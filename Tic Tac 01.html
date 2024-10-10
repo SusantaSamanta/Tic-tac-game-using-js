@@ -6,11 +6,14 @@
   <title>Calculator</title>
   <style>
     :root {
-      --borderColor : #001db5;
-      --borderWidth : 1vw;
+      --cellBorderColor : #3f4e6b;
+      --boardBorderColor : #3f4e6b;
+      --borderWidth : 3vw;
       --active-color : #19bc2bf5;
-      --X_piece_color : blue;
-      --O_piece_color : red;
+      --X_piece_color : #0e0ee2;
+      --O_piece_color : #d51717;
+      --bodyColor : #232c46;
+      
     }
    
     * {
@@ -23,6 +26,7 @@
       height: 100%;
       width: 100%;
       margin-bottom: 0px;
+      background: var(--bodyColor);
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -45,8 +49,8 @@
       justify-content:space-between;
     }
     .players{
-      width: 30vw;
-      background: #e1e7fc;
+      width: 35vw;
+      background-image: linear-gradient(135deg,#c0b6fce0, #77dfc5e2);
       border: 3px solid var(--active-color);
      /* box-shadow: 0px 0px 8px 3px var(--active-color);*/
       display: flex;
@@ -79,9 +83,43 @@
       display: grid;
       grid-template-rows: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
-      gap :0px;
-      border: 0vw solid blue;
+      gap: 0px;
+      border-radius: 3vw;
+      border: var(--borderWidth) solid #ffffff00;
+      position: relative;
+      z-index: 1;
     }
+    .outSideBorder{
+      height: 90vw;
+      width: 90vw;
+      top: -3vw;
+     /* top: var(--borderWidth);*/
+     /* left: var(--borderWidth);*/
+      left: -3vw;
+      border-radius: var(--borderWidth);
+      position: absolute;
+      z-index: -1;
+    }
+    
+    #outSideTopBorder{
+      border-top: var(--borderWidth) solid var(--boardBorderColor);
+    }
+    #outSideRightBorder{
+      border-right: var(--borderWidth) solid var(--boardBorderColor);
+    }
+    
+    #outSideBottomBorder{
+      border-bottom: var(--borderWidth) solid var(--boardBorderColor);
+    }
+    
+    #outSideLeftBorder{
+      border-left: var(--borderWidth) solid var(--boardBorderColor);
+    }
+    
+    
+    
+    
+    
     .cell_size{
       display: flex;
       justify-content: center;
@@ -91,51 +129,51 @@
       border: 0px solid red;
     }
     #cell_1{
-      border-bottom: var(--borderWidth) solid var(--borderColor);
-      border-right: var(--borderWidth) solid var(--borderColor);
+      border-bottom: var(--borderWidth) solid var(--cellBorderColor);
+      border-right: var(--borderWidth) solid var(--cellBorderColor);
       translate: -34vw -30vw;
       transition: all .6s ease;
     }
     #cell_2{
-      border-bottom: var(--borderWidth) solid var(--borderColor);
-      translate: 0vw -82vw ;
+      border-bottom: var(--borderWidth) solid var(--cellBorderColor);
+      translate: 0vw -95vw ;
       transition: all .3s ease;
    /* position: relative;
       bottom: 42vh; */
     }
     #cell_3{
-      border-bottom: var(--borderWidth) solid var(--borderColor);
-      border-left: var(--borderWidth) solid var(--borderColor);
+      border-bottom: var(--borderWidth) solid var(--cellBorderColor);
+      border-left: var(--borderWidth) solid var(--cellBorderColor);
       translate: 34vw -30vw;
       transition: all .7s ease;
     }
     #cell_4{
-      border-right: var(--borderWidth) solid var(--borderColor);
+      border-right: var(--borderWidth) solid var(--cellBorderColor);
       translate: -34vw 0vw;
       transition: all .4s ease;
     }
     
     #cell_6{
-      border-left: var(--borderWidth) solid var(--borderColor);
+      border-left: var(--borderWidth) solid var(--cellBorderColor);
       translate: 34vw 0vw;
       transition: all .5s ease;
     }
     
      #cell_7{
-      border-top: var(--borderWidth) solid var(--borderColor);
-      border-right: var(--borderWidth) solid var(--borderColor);
+      border-top: var(--borderWidth) solid var(--cellBorderColor);
+      border-right: var(--borderWidth) solid var(--cellBorderColor);
       translate: -34vw 30vw;
       transition: all .9s ease;
     }
     
     #cell_8{
-      border-top: var(--borderWidth) solid var(--borderColor);
+      border-top: var(--borderWidth) solid var(--cellBorderColor);
       translate: 0vw 82vw ;
       transition: all .6s ease;
     }
     #cell_9{
-      border-top: var(--borderWidth) solid var(--borderColor);
-      border-left: var(--borderWidth) solid var(--borderColor);
+      border-top: var(--borderWidth) solid var(--cellBorderColor);
+      border-left: var(--borderWidth) solid var(--cellBorderColor);
       translate: 34vw 30vw;
       transition: all .8s ease;
     }
@@ -158,6 +196,10 @@
     <div id="cell_7" class="cell_size"></div>
     <div id="cell_8" class="cell_size"></div>
     <div id="cell_9" class="cell_size"></div>
+    <div id="outSideTopBorder" class="outSideBorder"></div>
+    <div id="outSideRightBorder" class="outSideBorder"></div>
+    <div id="outSideBottomBorder" class="outSideBorder"></div>
+    <div id="outSideLeftBorder" class="outSideBorder"></div>
   </div>
 </div>  
   <script> 
