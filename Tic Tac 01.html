@@ -10,8 +10,8 @@
       --boardBorderColor : #3f4e6b;
       --borderWidth : 3vw;
       --active-color : #19bc2bf5;
-      --X_piece_color : #0e0ee2;
-      --O_piece_color : #d51717;
+      --X_piece_color : #5fb544;
+      --O_piece_color : #fa7530;
       --bodyColor : #232c46;
       
     }
@@ -38,48 +38,58 @@
     
     #playerNameContainer{
       width: 100vw;
-      height: 8vh;
-      margin-block: 2vh;
-      padding-inline: 3vw;
-      font-size: 5vw;
-      font-weight: 800;
-      color: #0805af;
+      height: fit-content;
+      margin-block: 3vh;
+      padding-inline: 5vw;
       border: 0px solid red;
       display: flex;
       justify-content:space-between;
+      position: relative;
     }
     .players{
       width: 35vw;
-      background-image: linear-gradient(135deg,#c0b6fce0, #77dfc5e2);
+      padding-block: 1.5vw;
+      padding-inline: 3vw;
+      background: var(--cellBorderColor);
       border: 3px solid var(--active-color);
-     /* box-shadow: 0px 0px 8px 3px var(--active-color);*/
+      border: 0vw solid #aaaaaa;
+      border-radius: 2vw;
       display: flex;
-      justify-content: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
-      border-radius: 20px;
+      font-size: 4.5vw;
+      font-weight: 800;
+      color: white;
     }
-    #player1{
-    }
-    #player1 p{
-      margin-top: 1vw;
-      margin-left: 2vw;
+    
+  
+    
+    
+   
+    
+    #playerSignX{
+      width: 100%;
       font-size: 7vw;
       color: var(--X_piece_color);
     }
-    #player2{
-    }
-    
-    #player2 p{
-      margin-top: 1vw;
-      margin-left: 2vw;
+    #playerSignO{
+      width: 100%;
       font-size: 8vw;
       color: var(--O_piece_color);
+    }
+
+    #turn{
+      margin-block: 5vw;
+      font-size: 8vw;
+      font-weight: 800;
+      color: white;
     }
     
     #game_container{
       height: 90vw;
       width: 90vw;
-      margin-top: 20vh;
+      margin-top: 3vh;
       display: grid;
       grid-template-rows: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
@@ -131,14 +141,10 @@
       transform: rotate(-80deg);
       transition: all 1.3s ease;
       border-left: var(--borderWidth) solid var(--boardBorderColor);
-      
     }
     
-    
-    
-    
-    
     .cell_size{
+      color: #4b4b4bc6;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -195,14 +201,42 @@
       translate: 34vw 30vw;
       transition: all .8s ease;
     }
+    
+    #playAgain{
+      height: 10vw;
+      width: 90vw;
+      margin-top: 15vw;
+      padding-inline: 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5vw;
+      font-weight: 500;
+      color: black;
+      background: white;
+      border-radius: 2vw;
+      opacity: 20%;
+    }
+    
+    
+    
+    
  </style>
 <body>
 <div id="body">
   
   <div id="playerNameContainer">
-    <div id="player1" class="players">Player : <p>X</p></div>
-    <div id="player2" class="players">Player : <p>O</p></div>
+    <div id="player1" class="players">
+      <div id="playerSignX">X</div>  
+      Player : <p>31</p>
+    </div>
+    <div id="player2" class="players">
+      <div id="playerSignO" >O</div>  
+      Player : <p>465</p>
+    </div>
   </div>
+  
+  <div id="turn">X Turn</div>
   
   <div id="game_container">
     <div id="cell_1" class="cell_size"></div>
@@ -219,127 +253,9 @@
     <div id="outSideBottomBorder" class="outSideBorder"></div>
     <div id="outSideLeftBorder" class="outSideBorder"></div>
   </div>
+  <div id="playAgain">Play Again</div>
 </div>  
-  <script> 
-    
-    window.onload = function () {
-      setTimeout(function() {
-        cell_1.style.translate = '0vw 0vw';
-        cell_2.style.translate = '0vw 0vw';
-        cell_3.style.translate = '0vw 0vw';
-        cell_4.style.translate = '0vw 0vw';
-        cell_6.style.translate = '0vw 0vw';
-        cell_7.style.translate = '0vw 0vw';
-        cell_8.style.translate = '0vw 0vw';
-        cell_9.style.translate = '0vw 0vw';
-        outSideTopBorder.style.transform = 'rotate(0deg)';
-        outSideTopBorder.style.translate = '0vw 0vw';
-        outSideRightBorder.style.transform = 'rotate(0deg)';
-        outSideRightBorder.style.translate = '0vw 0vw';
-        outSideBottomBorder.style.transform = 'rotate(0deg)';
-        outSideBottomBorder.style.translate = '0vw 0vw';
-        outSideLeftBorder.style.transform = 'rotate(0deg)';
-        outSideLeftBorder.style.translate = '0vw 0vw';
-      }, 50);
-    };
-    
-  let cell_1_lock = cell_2_lock = cell_3_lock = cell_4_lock = cell_5_lock = cell_6_lock = cell_7_lock = cell_8_lock = cell_9_lock = 1; 
-  
-  document.addEventListener('click', (event) => {
-    if(event.target.tagName === 'DIV' && event.target.id == 'cell_1' && cell_1_lock == 1){
-      
-      cell_1_lock = 0;
-      let v1 = pieceValue1();
-      cell_1.innerHTML = v1.substring(0,1);
-      cell_1.style.color = v1.substring(1,v1.length);
-     // cell_1.style.color = "var(--blue_piece_color)";
-    }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_2' && cell_2_lock == 1){
-      
-      cell_2_lock = 0;
-      let v2 = pieceValue1();
-      cell_2.innerHTML = v2.substring(0,1);
-      cell_2.style.color = v2.substring(1,v2.length);
-    }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_3' && cell_3_lock == 1){
-      
-      cell_3_lock = 0;
-      let v3 = pieceValue1();
-      cell_3.innerHTML = v3.substring(0,1);
-      cell_3.style.color = v3.substring(1,v3.length);
-    }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_4' && cell_4_lock == 1){
-      
-      cell_4_lock = 0;
-      let v4 = pieceValue1();
-      cell_4.innerHTML = v4.substring(0,1);
-      cell_4.style.color = v4.substring(1,v4.length);
-      
-    }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_5' && cell_5_lock == 1){
-      
-      cell_5_lock = 0;
-      let v5 = pieceValue1();
-      cell_5.innerHTML = v5.substring(0,1);
-      cell_5.style.color = v5.substring(1,v5.length);
-    }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_6' && cell_6_lock == 1){
-      
-      cell_6_lock = 0;
-      let v6 = pieceValue1();
-      cell_6.innerHTML = v6.substring(0,1);
-      cell_6.style.color = v6.substring(1,v6.length);
-    }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_7' && cell_7_lock == 1){
-      
-      cell_7_lock = 0;
-      let v7 = pieceValue1();
-      cell_7.innerHTML = v7.substring(0,1);
-      cell_7.style.color = v7.substring(1,v7.length);
-      
-    }
-    
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_8' && cell_8_lock == 1){
-      
-      cell_8_lock = 0;
-      let v8 = pieceValue1();
-      cell_8.innerHTML = v8.substring(0,1);
-      cell_8.style.color = v8.substring(1,v8.length);
-      
-    }
-    else if(event.target.tagName === 'DIV' && event.target.id == 'cell_9' && cell_9_lock == 1){
-      
-      cell_9_lock = 0;
-      let v9 = pieceValue1();
-      cell_9.innerHTML = v9.substring(0,1);
-      cell_9.style.color = v9.substring(1,v9.length);
-      
-    }
-  })
-  
-  
-  let pieceNumberCount = 1;
-  
-  const pieceValue1 = () => {
-    if(pieceNumberCount % 2 == 0 && pieceNumberCount < 10){
-      pieceNumberCount ++;
-      return 'O var(--O_piece_color)';
-    }
-    else if(pieceNumberCount % 2 != 0 && pieceNumberCount < 10){
-      pieceNumberCount ++;
-      if(pieceNumberCount == 10){
-        pieceNumberCount = 1;
-        //console.log('end '+pieceNumberCount);
-      }
-      return 'X var(--X_piece_color)';
-      
-    }
-
-  }
-  
-  
-  
-  </script>
+  <script src="Tic Tac 01.js"></script>
 
 </body>
 
