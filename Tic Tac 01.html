@@ -14,6 +14,8 @@
       --X_piece_color: #5fb544;
       --O_piece_color: #fa7530;
       --bodyColor: #232c46;
+      --playerBorderSize: 0.5vw;
+      --playerBorderColor: #aaaaaa;
 
     }
 
@@ -67,8 +69,7 @@
     }
 
     #player1 {
-      box-shadow: 0 0 0vw 0vw #70f53562;
-      border: .5vw solid #aaaaaa;
+      border: var(--playerBorderSize) solid var(--playerBorderColor);
     }
 
 
@@ -279,6 +280,3 @@
 </body>
 
 </html>
-
-
-
