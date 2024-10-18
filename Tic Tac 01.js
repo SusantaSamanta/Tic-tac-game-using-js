@@ -130,6 +130,7 @@ document.addEventListener('click', (event) => {
     playAgainActivation_fun_count = 0;
     pieceNumberCount1 = pieceNumberCount2 = 1;
     roundCount++;
+    initialBorderOf_X_O();
   }
 
 })
@@ -140,15 +141,22 @@ let pieceNumberCount1 = 1;
 const pieceValue1 = () => {
   if (pieceNumberCount1 % 2 == 0 && pieceNumberCount1 < 10) {
     pieceNumberCount1++;
+    if (pieceNumberCount1 < 10)
+      player_X_Border();
+    player_O_Border_Off();
     return 'O var(--O_piece_color)';
   }
   else if (pieceNumberCount1 % 2 != 0 && pieceNumberCount1 < 10) {
     pieceNumberCount1++;
+    if (pieceNumberCount1 < 10)
+      player_O_Border();
+    player_X_Border_Off();
     // if (pieceNumberCount1 == 10) {
     //   pieceNumberCount1 = 1;
     //   console.log('end '+pieceNumberCount1);
     // }
     return 'X var(--X_piece_color)';
+
   }
 }
 
@@ -157,10 +165,17 @@ let pieceNumberCount2 = 1;
 const pieceValue2 = () => {
   if (pieceNumberCount2 % 2 == 0 && pieceNumberCount2 < 10) {
     pieceNumberCount2++;
+    if (pieceNumberCount2 < 10)
+      player_O_Border();
+    player_X_Border_Off();
     return 'X var(--X_piece_color)';
   }
   else if (pieceNumberCount2 % 2 != 0 && pieceNumberCount2 < 10) {
     pieceNumberCount2++;
+    if (pieceNumberCount2 < 10)
+      player_X_Border();
+    player_O_Border_Off();
+
     return 'O var(--O_piece_color)';
   }
 }
@@ -180,6 +195,8 @@ const cell_content_remove = () => {
   v1 = v2 = v3 = v4 = v5 = v6 = v7 = v8 = v9 = 0;
   c1 = c2 = c3 = c4 = c5 = c6 = c7 = c8 = c9 = 0;
   allCellColorReset();
+  player_X_Border_Off();
+  player_O_Border_Off();
 }
 
 let playAgainActivation_fun_count = 0;
@@ -250,7 +267,43 @@ const actionAfterWin = () => {
   allCellLock();
   playAgain.style.opacity = '100%';
   playAgainActive = 1;
-
+  player_X_Border_Off();
+  player_O_Border_Off();
 }
+
+
+const player_X_Border = () => {
+  player1.style.border = "var(--playerBorderSize) solid var(--playerBorderColor)";
+}
+
+const player_X_Border_Off = () => {
+  player1.style.border = "0vw solid #aaaaaa";
+}
+
+const player_O_Border = () => {
+  player2.style.border = "var(--playerBorderSize) solid var(--playerBorderColor)";
+}
+
+const player_O_Border_Off = () => {
+  player2.style.border = "0vw solid #aaaaaa";
+}
+
+const initialBorderOf_X_O = () => {
+  if (roundCount % 2 == 0)
+    player_O_Border();
+  else
+    player_X_Border();
+}
+
+// window.onload = function() {
+//   initialBorderOf_X_O();
+// };
+
+
+
+
+
+
+
 
 
