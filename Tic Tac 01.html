@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic Tac Game</title>
   <style>
+  
+    @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');    /* font-family: "Mochiy Pop P One", sans-serif; */
+    
+    
     :root {
       --playerCardBg: #3c4b67;
       --cellBorderColor: #3e4d6a;
@@ -13,10 +17,11 @@
       --active-color: #19bc2bf5;
       --X_piece_color: #5fb544;
       --O_piece_color: #fa7530;
+      --piece_font_style: "Mochiy Pop P One", sans-serif;
       --bodyColor: #232c46;
       --playerBorderSize: 0.5vw;
       --playerBorderColor: #aaaaaa;
-
+      
     }
 
     * {
@@ -41,9 +46,9 @@
     }
 
     #playerNameContainer {
+      height: 20vw;
       width: 100vw;
-      height: fit-content;
-      margin-block: 3vh;
+      margin-top: 7vw;
       padding-inline: 5vw;
       border: 0px solid red;
       display: flex;
@@ -52,6 +57,7 @@
     }
 
     .players {
+      height: fit-content;
       width: 35vw;
       padding-block: 1.5vw;
       padding-inline: 3vw;
@@ -72,23 +78,22 @@
       border: var(--playerBorderSize) solid var(--playerBorderColor);
     }
 
-
-
-
     #playerSignX {
       width: 100%;
       font-size: 7vw;
       color: var(--X_piece_color);
+      font-family: var(--piece_font_style);
     }
 
     #playerSignO {
       width: 100%;
       font-size: 8vw;
       color: var(--O_piece_color);
+      font-family: var(--piece_font_style);
     }
 
     #turn {
-      margin-block: 5vw;
+      margin-top: 7vw;
       display: flex;
       font-size: 8vw;
       font-weight: 800;
@@ -96,14 +101,17 @@
     }
 
     #turnSign {
+      border: 0px solid red;
       color: var(--X_piece_color);
+      font-family: var(--piece_font_style);
       margin-right: 3vw;
+      translate: 0vw -1.8vw; 
     }
 
     #game_container {
       height: 90vw;
       width: 90vw;
-      margin-top: 3vh;
+      margin-top: 6vw;
       display: grid;
       grid-template-rows: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
@@ -164,7 +172,8 @@
       justify-content: center;
       align-items: center;
       color: #4b4b4bc6;
-      font-size: 20vw;
+      font-family: var(--piece_font_style);
+      font-size: 15vw;
       font-weight: 400;
       border: 0px solid red;
     }
@@ -237,6 +246,7 @@
       background: white;
       border-radius: 2vw;
       opacity: 20%;
+      translate: 0 24vh;
     }
   </style>
 
@@ -255,7 +265,7 @@
     </div>
 
     <div id="turn">
-      <P id="turnSign">X</P> Turn
+      <P id="turnSign">X O</P> Turn
     </div>
 
     <div id="game_container">
