@@ -1,6 +1,9 @@
 
 window.onload = function () {
   setTimeout(function () {
+    playAgainBottonMovement();
+  },900)
+  setTimeout(function () {
     cell_1.style.translate = '0vw 0vw';
     cell_2.style.translate = '0vw 0vw';
     cell_3.style.translate = '0vw 0vw';
@@ -299,7 +302,43 @@ const initialBorderOf_X_O = () => {
 //   initialBorderOf_X_O();
 // };
 
-
+const playAgainBottonMovement = () => {
+  setTimeout (function () {
+    playAgain.style.translate = '0 -8vh';
+    playAgain.style.transition = 'all .3s ease';
+    console.log('1st move')
+  },1)
+  setTimeout (function () {
+    playAgain.style.translate = '0 7vh';
+    playAgain.style.transition = 'all .3s ease';
+    console.log('2nd move')
+  },300)
+  setTimeout (function () {
+    playAgain.style.translate = '0 -5vh';
+    playAgain.style.transition = 'all .2s ease';
+    console.log('3rd move')
+  },600)
+  setTimeout (function () {
+    playAgain.style.translate = '0 4vh';
+    playAgain.style.transition = 'all .2s ease';
+    console.log('4th move')
+  },800)
+  setTimeout (function () {
+    playAgain.style.translate = '0 -2vh';
+    playAgain.style.transition = 'all .1s ease';
+    console.log('4th move')
+  },1000)
+  setTimeout (function () {
+    playAgain.style.translate = '0 1vh';
+    playAgain.style.transition = 'all .1s ease';
+    console.log('4th move')
+  },1100)
+  setTimeout (function () {
+    playAgain.style.translate = '0 0vh';
+    playAgain.style.transition = 'all .1s ease';
+    console.log('4th move')
+  },1200)
+}
 
 
 
