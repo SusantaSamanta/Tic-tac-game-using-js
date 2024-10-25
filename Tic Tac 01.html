@@ -14,13 +14,12 @@
       --cellBorderColor: #3e4d6a;
       --boardBorderColor: #3e4d6a;
       --borderWidth: 3vw;
-      --active-color: #19bc2bf5;
       --X_piece_color: #5fb544;
       --O_piece_color: #fa7530;
       --piece_font_style: "Mochiy Pop P One", sans-serif;
       --bodyColor: #232c46;
       --playerBorderSize: 0.5vw;
-      --playerBorderColor: #aaaaaa;
+      --playerActiveBorderColor: #aaaaaa;
       
     }
 
@@ -62,8 +61,7 @@
       padding-block: 1.5vw;
       padding-inline: 3vw;
       background: var(--playerCardBg);
-      border: 3px solid var(--active-color);
-      border: .1vw solid #aaaaaa;
+     /* border: .1vw solid #aaaaaa;*/
       border-radius: 2vw;
       display: flex;
       flex-wrap: wrap;
@@ -75,7 +73,10 @@
     }
 
     #player1 {
-      border: var(--playerBorderSize) solid var(--playerBorderColor);
+      border: var(--playerBorderSize) solid var(--playerActiveBorderColor);
+    }
+    #player2 {
+      border: var(--playerBorderSize) solid #38383800;
     }
 
     #playerSignX {
@@ -93,21 +94,29 @@
     }
 
     #turn {
-      margin-top: 7vw;
+      height: 9vw;
       display: flex;
+      margin-top: 7vw;
+      align-items: center;
+      border: 0px solid red;
+      display: flex;
+     /* overflow: hidden; */ 
       font-size: 8vw;
       font-weight: 800;
       color: white;
     }
 
     #turnSign {
+      margin-right: 3vw;
       border: 0px solid red;
       color: var(--X_piece_color);
       font-family: var(--piece_font_style);
-      margin-right: 3vw;
-      translate: 0vw -1.8vw; 
+      translate: 0vw -1.5vw; 
     }
-
+    #turnOrWin{
+      border: 0px solid #091ef6;
+    }
+    
     #game_container {
       height: 90vw;
       width: 90vw;
@@ -265,7 +274,8 @@
     </div>
 
     <div id="turn">
-      <P id="turnSign">X O</P> Turn
+      <P id="turnSign">X</P>
+      <p id="turnOrWin">Turn</p>
     </div>
 
     <div id="game_container">
