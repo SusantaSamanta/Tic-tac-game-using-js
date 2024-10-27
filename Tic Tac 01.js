@@ -2,7 +2,7 @@
 window.onload = function () {
   setTimeout(function () {
     playAgainBottonMovement();
-  },900)
+  }, 800)
   setTimeout(function () {
     cell_1.style.translate = '0vw 0vw';
     cell_2.style.translate = '0vw 0vw';
@@ -256,6 +256,12 @@ const winChecker = (c1, c2, c3, c4, c5, c6, c7, c8, c9) => {
     console.log('d2 win');
     actionAfterWin();
   }
+  else if (c1 != 0 && c2 != 0 && c3 != 0 && c4 != 0 && c5 != 0 && c6 != 0 && c7 != 0 && c8 != 0 && c9 != 0) {
+    console.log('draw');
+    turnSign.innerHTML = '';
+    turnOrWin.innerHTML = 'Match Draw'
+  }
+  
 }
 
 
@@ -266,29 +272,39 @@ const testThreeCell = (a, b, c) => {
     return false;
 }
 
+
+
 const actionAfterWin = () => {
   allCellLock();
   playAgain.style.opacity = '100%';
   playAgainActive = 1;
   player_X_Border_Off();
   player_O_Border_Off();
+  turnSign.innerHTML = ''; //give win sign
+  turnOrWin.innerHTML = 'Win'
 }
 
 
 const player_X_Border = () => {
-  player1.style.border = "var(--playerBorderSize) solid var(--playerBorderColor)";
+  player1.style.border = "var(--playerBorderSize) solid var(--playerActiveBorderColor)";
+  turnSign.innerHTML = 'X';
+  turnSign.style.color = 'var(--X_piece_color)';
+  turnOrWin.innerHTML = 'Turn';
 }
 
 const player_X_Border_Off = () => {
-  player1.style.border = "0vw solid #aaaaaa";
+  player1.style.border = "var(--playerBorderSize) solid #38383800";
 }
 
 const player_O_Border = () => {
-  player2.style.border = "var(--playerBorderSize) solid var(--playerBorderColor)";
+  player2.style.border = "var(--playerBorderSize) solid var(--playerActiveBorderColor)";
+  turnSign.innerHTML = 'O';
+  turnSign.style.color = 'var(--O_piece_color)';
+  turnOrWin.innerHTML = 'Turn';
 }
 
 const player_O_Border_Off = () => {
-  player2.style.border = "0vw solid #aaaaaa";
+  player2.style.border = "var(--playerBorderSize) solid #38383800";
 }
 
 const initialBorderOf_X_O = () => {
@@ -298,46 +314,35 @@ const initialBorderOf_X_O = () => {
     player_X_Border();
 }
 
-// window.onload = function() {
-//   initialBorderOf_X_O();
-// };
-
 const playAgainBottonMovement = () => {
-  setTimeout (function () {
-    playAgain.style.translate = '0 -8vh';
+  setTimeout(function () {
+    playAgain.style.translate = '0 -7vh';
     playAgain.style.transition = 'all .3s ease';
-    console.log('1st move')
-  },1)
-  setTimeout (function () {
-    playAgain.style.translate = '0 7vh';
+  }, 1)
+  setTimeout(function () {
+    playAgain.style.translate = '0 6.5vh';
     playAgain.style.transition = 'all .3s ease';
-    console.log('2nd move')
-  },300)
-  setTimeout (function () {
+  }, 300)
+  setTimeout(function () {
     playAgain.style.translate = '0 -5vh';
     playAgain.style.transition = 'all .2s ease';
-    console.log('3rd move')
-  },600)
-  setTimeout (function () {
+  }, 600)
+  setTimeout(function () {
     playAgain.style.translate = '0 4vh';
     playAgain.style.transition = 'all .2s ease';
-    console.log('4th move')
-  },800)
-  setTimeout (function () {
+  }, 800)
+  setTimeout(function () {
     playAgain.style.translate = '0 -2vh';
     playAgain.style.transition = 'all .1s ease';
-    console.log('4th move')
-  },1000)
-  setTimeout (function () {
+  }, 1000)
+  setTimeout(function () {
     playAgain.style.translate = '0 1vh';
     playAgain.style.transition = 'all .1s ease';
-    console.log('4th move')
-  },1100)
-  setTimeout (function () {
+  }, 1100)
+  setTimeout(function () {
     playAgain.style.translate = '0 0vh';
     playAgain.style.transition = 'all .1s ease';
-    console.log('4th move')
-  },1200)
+  }, 1200)
 }
 
 
