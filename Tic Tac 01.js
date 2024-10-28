@@ -185,10 +185,13 @@ const pieceValue2 = () => {
 
 
 const pieceSwapControl = () => {
-  if (roundCount % 2 == 0)
+  if (roundCount % 2 == 0){
     return pieceValue2();
-  else
+
+  }
+  else{
     return pieceValue1();
+  }
 }
 
 
@@ -227,41 +230,49 @@ const winChecker = (c1, c2, c3, c4, c5, c6, c7, c8, c9) => {
     // if(c1 == c2 && c2 == c3 && c1 != 0 && c2 != 0 && c3 != 0){
     console.log('r1 win');
     actionAfterWin();
+    winSignFind(c1);
   }
   else if (testThreeCell(c4, c5, c6)) {
     console.log('r2 win');
     actionAfterWin();
+    winSignFind(c4);
   }
   else if (testThreeCell(c7, c8, c9)) {
     console.log('r3 win');
     actionAfterWin();
+    winSignFind(c7);
   }
   else if (testThreeCell(c1, c4, c7)) {
     console.log('c1 win');
     actionAfterWin();
+    winSignFind(c1);
   }
   else if (testThreeCell(c2, c5, c8)) {
     console.log('c2 win');
     actionAfterWin();
+    winSignFind(c2);
   }
   else if (testThreeCell(c3, c6, c9)) {
     console.log('c3 win');
     actionAfterWin();
+    winSignFind(c3);
   }
   else if (testThreeCell(c1, c5, c9)) {
     console.log('d1 win');
     actionAfterWin();
+    winSignFind(c1);
   }
   else if (testThreeCell(c3, c5, c7)) {
     console.log('d2 win');
     actionAfterWin();
+    winSignFind(c3);
   }
   else if (c1 != 0 && c2 != 0 && c3 != 0 && c4 != 0 && c5 != 0 && c6 != 0 && c7 != 0 && c8 != 0 && c9 != 0) {
     console.log('draw');
     turnSign.innerHTML = '';
     turnOrWin.innerHTML = 'Match Draw'
   }
-  
+
 }
 
 
@@ -290,6 +301,12 @@ const player_X_Border = () => {
   turnSign.innerHTML = 'X';
   turnSign.style.color = 'var(--X_piece_color)';
   turnOrWin.innerHTML = 'Turn';
+  // turnSignMoveUp();
+}
+const turnSignMoveUp = () => {
+
+  turnSign.style.translate =  "0vw -1.2vw";
+  turnSign.style.translate =  "0vw -1.2vw";
 }
 
 const player_X_Border_Off = () => {
@@ -344,6 +361,21 @@ const playAgainBottonMovement = () => {
     playAgain.style.transition = 'all .1s ease';
   }, 1200)
 }
+
+
+const winSignFind = (test) => {
+  if (test == 'X') {
+    turnSign.innerHTML = "X"
+    turnSign.style.color = "var(--X_piece_color)"
+    console.log("X win");
+  }
+  else {
+    console.log("O win");
+    turnSign.innerHTML = "O"
+    turnSign.style.color = "var(--O_piece_color)"
+  }
+}
+
 
 
 
