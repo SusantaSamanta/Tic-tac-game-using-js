@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic Tac Game</title>
   <style>
-  
-    @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');    /* font-family: "Mochiy Pop P One", sans-serif; */
-    
-    
+    @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+    /* font-family: "Mochiy Pop P One", sans-serif; */
+
+
     :root {
       --playerCardBg: #3c4b67;
       --cellBorderColor: #3e4d6a;
@@ -20,7 +20,7 @@
       --bodyColor: #232c46;
       --playerBorderSize: 0.5vw;
       --playerActiveBorderColor: #aaaaaa;
-      
+
     }
 
     * {
@@ -61,7 +61,7 @@
       padding-block: 1.5vw;
       padding-inline: 3vw;
       background: var(--playerCardBg);
-     /* border: .1vw solid #aaaaaa;*/
+      /* border: .1vw solid #aaaaaa;*/
       border-radius: 2vw;
       display: flex;
       flex-wrap: wrap;
@@ -75,6 +75,7 @@
     #player1 {
       border: var(--playerBorderSize) solid var(--playerActiveBorderColor);
     }
+
     #player2 {
       border: var(--playerBorderSize) solid #38383800;
     }
@@ -100,7 +101,7 @@
       align-items: center;
       border: 0px solid red;
       display: flex;
-     /* overflow: hidden; */ 
+      overflow: hidden;
       font-size: 8vw;
       font-weight: 800;
       color: white;
@@ -108,15 +109,17 @@
 
     #turnSign {
       margin-right: 3vw;
-      border: 0px solid red;
+      border: 0 solid red;
       color: var(--X_piece_color);
       font-family: var(--piece_font_style);
-      translate: 0vw -1.5vw; 
+      translate: 0vw -1.2vw; 
+      /* translate: 0vw 7vw; */
     }
-    #turnOrWin{
+
+    #turnOrWin {
       border: 0px solid #091ef6;
     }
-    
+
     #game_container {
       height: 90vw;
       width: 90vw;
