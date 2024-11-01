@@ -1,6 +1,6 @@
 
 window.onload = function () {
-  setTimeout(function () {
+  setTimeout( () =>{
     playAgainBottonMovement();
   }, 800)
   setTimeout(function () {
@@ -291,23 +291,32 @@ const actionAfterWin = () => {
   playAgainActive = 1;
   player_X_Border_Off();
   player_O_Border_Off();
-  turnSign.innerHTML = ''; //give win sign
-  turnOrWin.innerHTML = 'Win'
+  setTimeout( () => {
+    turnOrWin.innerHTML = 'Win'
+  }, 150);
 }
 
 
 const player_X_Border = () => {
   player1.style.border = "var(--playerBorderSize) solid var(--playerActiveBorderColor)";
-  turnSign.innerHTML = 'X';
-  turnSign.style.color = 'var(--X_piece_color)';
   turnOrWin.innerHTML = 'Turn';
-  // turnSignMoveUp();
+  turnSignMoveUpDown('X','var(--X_piece_color)')
+  
 }
-const turnSignMoveUp = () => {
+const turnSignMoveUpDown = (sign,color) => {
+  setTimeout( () => {
+    turnSign.style.translate =  "0vw -9vw";  
+  }, 50);
+  setTimeout( () => {
+    turnSign.innerHTML = sign;
+    turnSign.style.color = color;
+  }, 100);
+  setTimeout( () => {
+    turnSign.style.translate =  "0vw -1.2vw";
+  }, 150);
+  turnSign.style.transition = "all .05s ease";
+}
 
-  turnSign.style.translate =  "0vw -1.2vw";
-  turnSign.style.translate =  "0vw -1.2vw";
-}
 
 const player_X_Border_Off = () => {
   player1.style.border = "var(--playerBorderSize) solid #38383800";
@@ -315,9 +324,8 @@ const player_X_Border_Off = () => {
 
 const player_O_Border = () => {
   player2.style.border = "var(--playerBorderSize) solid var(--playerActiveBorderColor)";
-  turnSign.innerHTML = 'O';
-  turnSign.style.color = 'var(--O_piece_color)';
   turnOrWin.innerHTML = 'Turn';
+  turnSignMoveUpDown('O','var(--O_piece_color)')
 }
 
 const player_O_Border_Off = () => {
@@ -365,14 +373,12 @@ const playAgainBottonMovement = () => {
 
 const winSignFind = (test) => {
   if (test == 'X') {
-    turnSign.innerHTML = "X"
-    turnSign.style.color = "var(--X_piece_color)"
+    turnSignMoveUpDown('X','var(--X_piece_color)')
     console.log("X win");
   }
   else {
     console.log("O win");
-    turnSign.innerHTML = "O"
-    turnSign.style.color = "var(--O_piece_color)"
+    turnSignMoveUpDown('O', 'var(--O_piece_color)')
   }
 }
 
