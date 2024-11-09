@@ -1,6 +1,6 @@
 
 window.onload = function () {
-  setTimeout( () =>{
+  setTimeout(() => {
     playAgainBottonMovement();
   }, 800)
   setTimeout(function () {
@@ -123,7 +123,7 @@ document.addEventListener('click', (event) => {
     winChecker(c1, c2, c3, c4, c5, c6, c7, c8, c9);
     cell_9.style.color = v9.substring(1, v9.length);
 
-    playAgainActivation();
+    playAgainActivation();   //after all cell click or win play agen active
   }
 
   else if (event.target.tagName === 'DIV' && event.target.id == 'playAgain' && playAgainActive == 1) {
@@ -133,7 +133,7 @@ document.addEventListener('click', (event) => {
     playAgainActivation_fun_count = 0;
     pieceNumberCount1 = pieceNumberCount2 = 1;
     roundCount++;
-    initialBorderOf_X_O();
+    initialBorderOf_X_O();   // after one round by defalut bodre apply on the player box 
   }
 
 })
@@ -152,7 +152,7 @@ const pieceValue1 = () => {
   else if (pieceNumberCount1 % 2 != 0 && pieceNumberCount1 < 10) {
     pieceNumberCount1++;
     if (pieceNumberCount1 < 10)
-      player_O_Border();
+      player_O_Border();    // after 9 move border are not apply
     player_X_Border_Off();
     // if (pieceNumberCount1 == 10) {
     //   pieceNumberCount1 = 1;
@@ -169,13 +169,13 @@ const pieceValue2 = () => {
   if (pieceNumberCount2 % 2 == 0 && pieceNumberCount2 < 10) {
     pieceNumberCount2++;
     if (pieceNumberCount2 < 10)
-      player_O_Border();
+      player_O_Border();    // after 9 move border are not apply
     player_X_Border_Off();
     return 'X var(--X_piece_color)';
   }
   else if (pieceNumberCount2 % 2 != 0 && pieceNumberCount2 < 10) {
     pieceNumberCount2++;
-    if (pieceNumberCount2 < 10)
+    if (pieceNumberCount2 < 10)  // after 9 move border are not apply
       player_X_Border();
     player_O_Border_Off();
 
@@ -185,11 +185,10 @@ const pieceValue2 = () => {
 
 
 const pieceSwapControl = () => {
-  if (roundCount % 2 == 0){
+  if (roundCount % 2 == 0) {
     return pieceValue2();
-
   }
-  else{
+  else {
     return pieceValue1();
   }
 }
@@ -221,7 +220,7 @@ const allCellColorReset = () => {
 
 
 
-const allCellLock = () => {
+const allCellLock = () => {    
   cell_1_lock = cell_2_lock = cell_3_lock = cell_4_lock = cell_5_lock = cell_6_lock = cell_7_lock = cell_8_lock = cell_9_lock = 0;
 }
 
@@ -230,44 +229,52 @@ const winChecker = (c1, c2, c3, c4, c5, c6, c7, c8, c9) => {
     // if(c1 == c2 && c2 == c3 && c1 != 0 && c2 != 0 && c3 != 0){
     console.log('r1 win');
     actionAfterWin();
-    winSignFind(c1);
+    winSignFind(c1);    // if t can find the sign , that is store in c1
+    allCellColorDown(3, 2, 1);   // large value giv, because the index will not change if i remove first value  
   }
   else if (testThreeCell(c4, c5, c6)) {
     console.log('r2 win');
     actionAfterWin();
     winSignFind(c4);
+    allCellColorDown(6, 5, 4);
   }
   else if (testThreeCell(c7, c8, c9)) {
     console.log('r3 win');
     actionAfterWin();
     winSignFind(c7);
+    allCellColorDown(9, 8, 7);
   }
   else if (testThreeCell(c1, c4, c7)) {
     console.log('c1 win');
     actionAfterWin();
     winSignFind(c1);
+    allCellColorDown(7, 4, 1);
   }
   else if (testThreeCell(c2, c5, c8)) {
     console.log('c2 win');
     actionAfterWin();
     winSignFind(c2);
+    allCellColorDown(8, 5, 2);
   }
   else if (testThreeCell(c3, c6, c9)) {
     console.log('c3 win');
     actionAfterWin();
     winSignFind(c3);
+    allCellColorDown(9, 6, 3);
   }
   else if (testThreeCell(c1, c5, c9)) {
     console.log('d1 win');
     actionAfterWin();
     winSignFind(c1);
+    allCellColorDown(9, 5, 1);
   }
   else if (testThreeCell(c3, c5, c7)) {
     console.log('d2 win');
     actionAfterWin();
     winSignFind(c3);
+    allCellColorDown(7, 5, 3);
   }
-  else if (c1 != 0 && c2 != 0 && c3 != 0 && c4 != 0 && c5 != 0 && c6 != 0 && c7 != 0 && c8 != 0 && c9 != 0) {
+  else if (c1 != 0 && c2 != 0 && c3 != 0 && c4 != 0 && c5 != 0 && c6 != 0 && c7 != 0 && c8 != 0 && c9 != 0) {  //initialy all cell have 0 value after click value change x or o that means all cell clicked but above condition not match
     console.log('draw');
     turnSign.innerHTML = '';
     turnOrWin.innerHTML = 'Match Draw'
@@ -291,7 +298,7 @@ const actionAfterWin = () => {
   playAgainActive = 1;
   player_X_Border_Off();
   player_O_Border_Off();
-  setTimeout( () => {
+  setTimeout(() => {
     turnOrWin.innerHTML = 'Win'
   }, 150);
 }
@@ -300,21 +307,8 @@ const actionAfterWin = () => {
 const player_X_Border = () => {
   player1.style.border = "var(--playerBorderSize) solid var(--playerActiveBorderColor)";
   turnOrWin.innerHTML = 'Turn';
-  turnSignMoveUpDown('X','var(--X_piece_color)')
-  
-}
-const turnSignMoveUpDown = (sign,color) => {
-  setTimeout( () => {
-    turnSign.style.translate =  "0vw -9vw";  
-  }, 50);
-  setTimeout( () => {
-    turnSign.innerHTML = sign;
-    turnSign.style.color = color;
-  }, 100);
-  setTimeout( () => {
-    turnSign.style.translate =  "0vw -1.2vw";
-  }, 150);
-  turnSign.style.transition = "all .05s ease";
+  turnSignMoveUpDown('X', 'var(--X_piece_color)')
+
 }
 
 
@@ -325,11 +319,25 @@ const player_X_Border_Off = () => {
 const player_O_Border = () => {
   player2.style.border = "var(--playerBorderSize) solid var(--playerActiveBorderColor)";
   turnOrWin.innerHTML = 'Turn';
-  turnSignMoveUpDown('O','var(--O_piece_color)')
+  turnSignMoveUpDown('O', 'var(--O_piece_color)')
 }
 
 const player_O_Border_Off = () => {
   player2.style.border = "var(--playerBorderSize) solid #38383800";
+}
+
+const turnSignMoveUpDown = (sign, color) => {
+  setTimeout(() => {
+    turnSign.style.translate = "0vw -9vw";
+  }, 50);
+  setTimeout(() => {
+    turnSign.innerHTML = sign;
+    turnSign.style.color = color;
+  }, 100);
+  setTimeout(() => {
+    turnSign.style.translate = "0vw -1.2vw";
+  }, 150);
+  turnSign.style.transition = "all .05s ease";
 }
 
 const initialBorderOf_X_O = () => {
@@ -373,7 +381,7 @@ const playAgainBottonMovement = () => {
 
 const winSignFind = (test) => {
   if (test == 'X') {
-    turnSignMoveUpDown('X','var(--X_piece_color)')
+    turnSignMoveUpDown('X', 'var(--X_piece_color)')
     console.log("X win");
   }
   else {
@@ -383,6 +391,20 @@ const winSignFind = (test) => {
 }
 
 
+const allCellColorDown = (a, b, c) => {
+  let arrayCell = ["cell_1", "cell_2", "cell_3", "cell_4", "cell_5", "cell_6", "cell_7", "cell_8", "cell_9"];
+  arrayCell.splice(a - 1, 1);
+  arrayCell.splice(b - 1, 1);   // a,b,c remove becalue this are win
+  arrayCell.splice(c - 1, 1);
+  arrayCell.forEach((cellId) => {
+    let cell = document.getElementById(cellId);
+    if (cell.innerHTML == 'X')
+      cell.style.color = 'var(--X_piece_color_low)';
+    else
+      cell.style.color = 'var(--O_piece_color_low)';
+
+  });
+};
 
 
 
