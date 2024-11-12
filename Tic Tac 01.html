@@ -96,6 +96,20 @@
       font-family: var(--piece_font_style);
     }
 
+    #X_win_count {
+      text-align: right;
+      width: 12vw;
+      border: 0px solid red;
+      letter-spacing: .6vw;
+    }
+
+    #O_win_count {
+      text-align: right;
+      width: 12vw;
+      border: 0px solid red;
+      letter-spacing: .6vw;
+    }
+
     #turn {
       height: 9vw;
       display: flex;
@@ -114,7 +128,7 @@
       border: 0 solid red;
       color: var(--X_piece_color);
       font-family: var(--piece_font_style);
-      translate: 0vw -1.2vw; 
+      translate: 0vw -1.2vw;
       /* translate: 0vw 7vw; */
     }
 
@@ -262,6 +276,23 @@
       opacity: 20%;
       translate: 0 24vh;
     }
+
+    #restart {
+      height: 10vw;
+      width: 90vw;
+      margin-top: 15vw;
+      padding-inline: 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5vw;
+      font-weight: 500;
+      background: white;
+      border-radius: 2vw;
+      translate: 0 24vh;
+    }
+    
+
   </style>
 
 <body>
@@ -270,11 +301,11 @@
     <div id="playerNameContainer">
       <div id="player1" class="players">
         <div id="playerSignX">X</div>
-        Player : <p>31</p>
+        Player : <p id="X_win_count">0/0</p>
       </div>
       <div id="player2" class="players">
         <div id="playerSignO">O</div>
-        Player : <p>465</p>
+        Player : <p id="O_win_count">0/0</p>
       </div>
     </div>
 
@@ -299,10 +330,10 @@
       <div id="outSideLeftBorder" class="outSideBorder"></div>
     </div>
     <div id="playAgain">Play Again</div>
+    <div id="restart">Restart Game</div>
   </div>
   <script src="Tic Tac 01.js"></script>
 
 </body>
 
 </html>
-
