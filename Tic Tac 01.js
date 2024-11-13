@@ -1,5 +1,6 @@
 
 window.onload = function () {
+  restartMoveMent();
   setTimeout(() => {
     playAgainBottonMovement();
   }, 800)
@@ -28,6 +29,7 @@ let v1, v2, v3, v4, v5, v6, v7, v8, v9;
 let playAgainActive = 0;
 let roundCount = 1;
 let c1 = c2 = c3 = c4 = c5 = c6 = c7 = c8 = c9 = 0;
+let palyerXWinCount = 0, palyerOWinCount = 0;
 
 
 
@@ -136,6 +138,10 @@ document.addEventListener('click', (event) => {
     initialBorderOf_X_O();   // after one round by defalut bodre apply on the player box 
   }
 
+  else if (event.target.tagName === 'DIV' && event.target.id == 'restart') {
+    location.reload();
+  }
+
 })
 
 
@@ -220,7 +226,7 @@ const allCellColorReset = () => {
 
 
 
-const allCellLock = () => {    
+const allCellLock = () => {
   cell_1_lock = cell_2_lock = cell_3_lock = cell_4_lock = cell_5_lock = cell_6_lock = cell_7_lock = cell_8_lock = cell_9_lock = 0;
 }
 
@@ -298,6 +304,7 @@ const actionAfterWin = () => {
   playAgainActive = 1;
   player_X_Border_Off();
   player_O_Border_Off();
+  playerWinSave();
   setTimeout(() => {
     turnOrWin.innerHTML = 'Win'
   }, 150);
@@ -381,12 +388,14 @@ const playAgainBottonMovement = () => {
 
 const winSignFind = (test) => {
   if (test == 'X') {
-    turnSignMoveUpDown('X', 'var(--X_piece_color)')
+    palyerXWinCount++;
+    turnSignMoveUpDown('X', 'var(--X_piece_color)');
     console.log("X win");
   }
   else {
+    palyerOWinCount++;
     console.log("O win");
-    turnSignMoveUpDown('O', 'var(--O_piece_color)')
+    turnSignMoveUpDown('O', 'var(--O_piece_color)');
   }
 }
 
@@ -405,6 +414,22 @@ const allCellColorDown = (a, b, c) => {
 
   });
 };
+
+const restartMoveMent = () => {
+  setTimeout(() => {
+    restart.style.translate = '0 0vh';
+    restart.style.transition = 'all 1s ease';
+  }, 1100)
+}
+
+const playerWinSave = () => {
+  setTimeout(() => {
+    X_win_count.innerHTML = `${palyerXWinCount}/${roundCount}`
+    O_win_count.innerHTML = `${palyerOWinCount}/${roundCount}`
+  }, 10);
+
+}
+
 
 
 
