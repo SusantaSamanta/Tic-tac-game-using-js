@@ -36,11 +36,12 @@
       height: 100%;
       width: 100%;
       margin-bottom: 0px;
+      padding-block: 8vw;
       background: var(--bodyColor);
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
-      /* justify-content: flex-start;*/
+      justify-content: space-between;
       align-items: center;
       overflow: hidden;
       border: 0px solid red;
@@ -49,7 +50,7 @@
     #playerNameContainer {
       height: 20vw;
       width: 100vw;
-      margin-top: 7vw;
+      margin-top: 0vw;
       padding-inline: 5vw;
       border: 0px solid red;
       display: flex;
@@ -113,7 +114,7 @@
     #turn {
       height: 9vw;
       display: flex;
-      margin-top: 7vw;
+      margin-top: 0vw;
       align-items: center;
       border: 0px solid red;
       display: flex;
@@ -139,7 +140,7 @@
     #game_container {
       height: 90vw;
       width: 90vw;
-      margin-top: 6vw;
+      margin-top: 0vw;
       display: grid;
       grid-template-rows: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
@@ -263,7 +264,7 @@
     #playAgain {
       height: 10vw;
       width: 90vw;
-      margin-top: 15vw;
+      margin-top: 0vw;
       padding-inline: 5vw;
       display: flex;
       align-items: center;
@@ -280,7 +281,7 @@
     #restart {
       height: 10vw;
       width: 90vw;
-      margin-top: 15vw;
+      margin-top: 0vw;
       padding-inline: 5vw;
       display: flex;
       align-items: center;
@@ -291,8 +292,70 @@
       border-radius: 2vw;
       translate: 0 24vh;
     }
-    
 
+    @media screen and (min-width: 600px) {
+      #body {
+        padding-block: 8vw;
+      }
+
+      #playerNameContainer {
+        height: 15vw;
+        width: 95vw;
+      }
+
+      .players {
+        width: 35vw;
+        font-size: 4vw;
+        font-weight: 800;
+      }
+
+      #playerSignX {
+        font-size: 5vw;
+      }
+
+      #playerSignO {
+        font-size: 6vw;        
+      }
+      #turn {
+      height: 9vw;
+      font-size: 7vw;      
+    }
+    #game_container {
+      height: 75vw;
+      width: 75vw;
+      border-radius: 3.3vw; 
+    }
+
+    .outSideBorder {
+      height: 75vw;
+      width: 75vw;
+    }
+    .cell_size {
+      font-size: 12vw;
+      font-weight: 400;
+    }
+
+    #playAgain {
+      height: 7vw;
+      width: 60vw;
+      font-size: 4vw;
+      font-weight: 500;
+      border-radius: 1.5vw;
+      translate: 0 20vh;
+    }
+
+    #restart {
+      height: 6vw;
+      width: 60vw;
+      font-size: 4vw;
+      font-weight: 500;
+      border-radius: 1.5vw;
+      translate: 0 10vh;
+    }
+
+
+
+    }
   </style>
 
 <body>
