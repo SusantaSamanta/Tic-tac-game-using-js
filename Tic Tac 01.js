@@ -3,7 +3,7 @@ window.onload = function () {
   restartMoveMent();
   setTimeout(() => {
     playAgainBottonMovement();
-  }, 800)
+  }, 900)
   setTimeout(function () {
     cell_1.style.translate = '0vw 0vw';
     cell_2.style.translate = '0vw 0vw';
@@ -130,7 +130,8 @@ document.addEventListener('click', (event) => {
 
   else if (event.target.tagName === 'DIV' && event.target.id == 'playAgain' && playAgainActive == 1) {
     cell_content_remove();
-    playAgain.style.opacity = '20%';
+    playAgain.style.background = "var(--restartBtnDefaultBg)";
+    playAgain.style.color = "var(--restartBtnDefaultTextColor)";
     playAgainActive = 0;
     playAgainActivation_fun_count = 0;
     pieceNumberCount1 = pieceNumberCount2 = 1;
@@ -138,9 +139,9 @@ document.addEventListener('click', (event) => {
     initialBorderOf_X_O();   // after one round by defalut bodre apply on the player box 
   }
 
-  else if (event.target.tagName === 'DIV' && event.target.id == 'restart') {
-    location.reload();
-  }
+  // else if (event.target.tagName === 'DIV' && event.target.id == 'restart') {
+  //   it use at the Last part of the program 
+  //}
 
 })
 
@@ -215,7 +216,8 @@ const playAgainActivation = () => {
   playAgainActivation_fun_count++;
   // console.log(playAgainActivation_fun_count)
   if (playAgainActivation_fun_count == 9) {
-    playAgain.style.opacity = '100%';
+    playAgain.style.background = 'white';
+    playAgain.style.color = 'black';
     playAgainActive = 1;
   }
 }
@@ -300,14 +302,15 @@ const testThreeCell = (a, b, c) => {
 
 const actionAfterWin = () => {
   allCellLock();
-  playAgain.style.opacity = '100%';
+  playAgain.style.background = 'white';
+  playAgain.style.color = 'black';
   playAgainActive = 1;
   player_X_Border_Off();
   player_O_Border_Off();
   playerWinSave();
   setTimeout(() => {
     turnOrWin.innerHTML = 'Win'
-  }, 150);
+  }, 220);
 }
 
 
@@ -336,14 +339,14 @@ const player_O_Border_Off = () => {
 const turnSignMoveUpDown = (sign, color) => {
   setTimeout(() => {
     turnSign.style.translate = "0vw -9vw";
-  }, 50);
+  }, 100);  // turn sign go up 
   setTimeout(() => {
     turnSign.innerHTML = sign;
     turnSign.style.color = color;
-  }, 100);
+  }, 120);   // color change 
   setTimeout(() => {
     turnSign.style.translate = "0vw -1.2vw";
-  }, 150);
+  }, 220);   // move to default position 
   turnSign.style.transition = "all .05s ease";
 }
 
@@ -356,7 +359,7 @@ const initialBorderOf_X_O = () => {
 
 const playAgainBottonMovement = () => {
   setTimeout(function () {
-    playAgain.style.translate = '0 -7vh';
+    playAgain.style.translate = '0 -6vh';
     playAgain.style.transition = 'all .3s ease';
   }, 1)
   setTimeout(function () {
@@ -431,6 +434,16 @@ const playerWinSave = () => {
 }
 
 
+const actionForRestart = () => {
+  location.reload();
+}
+
+restart.addEventListener('touchstart', () => {
+  setTimeout(actionForRestart, 1000);
+  restartButtonBack.style.width = "100%"
+  restartButtonBack.style.transition = "all 1s ease";
+  restart.style.color = "black"
+});
 
 
 
