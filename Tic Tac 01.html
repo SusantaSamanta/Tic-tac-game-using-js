@@ -14,6 +14,7 @@
       --cellBorderColor: #3e4d6a;
       --boardBorderColor: #3e4d6a;
       --borderWidth: 3vw;
+      --borderWidth-2: 2vw;
       --X_piece_color: #5fb544;
       --X_piece_color_low: #5eb54451;
       --O_piece_color: #fa7530;
@@ -22,6 +23,8 @@
       --bodyColor: #232c46;
       --playerBorderSize: 0.5vw;
       --playerActiveBorderColor: #aaaaaa;
+      --restartBtnDefaultBg: #4f566b;
+      --restartBtnDefaultTextColor: #00000075;
 
     }
 
@@ -30,6 +33,7 @@
       margin: 0px;
       padding: 0px;
       box-sizing: border-box;
+      user-select: none;
     }
 
     #body {
@@ -126,7 +130,7 @@
 
     #turnSign {
       margin-right: 3vw;
-      border: 0 solid red;
+      border: 0px solid red;
       color: var(--X_piece_color);
       font-family: var(--piece_font_style);
       translate: 0vw -1.2vw;
@@ -142,8 +146,8 @@
       width: 90vw;
       margin-top: 0vw;
       display: grid;
-      grid-template-rows: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr .95fr 1fr;
+      grid-template-columns: 1fr .95fr 1fr;
       gap: 0px;
       border-radius: 3vw;
       border: var(--borderWidth) solid #ffffff00;
@@ -160,6 +164,7 @@
       left: -3vw;
       border-radius: var(--borderWidth);
       position: absolute;
+      border: 0px solid red;
       z-index: -1;
     }
 
@@ -264,18 +269,18 @@
     #playAgain {
       height: 10vw;
       width: 90vw;
-      margin-top: 0vw;
+      margin-top: 1vw;
       padding-inline: 5vw;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 5vw;
-      font-weight: 500;
-      color: black;
-      background: white;
+      font-weight: 600;
+      color: var(--restartBtnDefaultTextColor);
+      background: var(--restartBtnDefaultBg);
       border-radius: 2vw;
-      opacity: 20%;
       translate: 0 24vh;
+    /*  opacity: 20%; */
     }
 
     #restart {
@@ -283,14 +288,29 @@
       width: 90vw;
       margin-top: 0vw;
       padding-inline: 5vw;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 5vw;
-      font-weight: 500;
-      background: white;
+      font-weight: 600;
+      color: var(--restartBtnDefaultTextColor);
+      background: var(--restartBtnDefaultBg);
       border-radius: 2vw;
       translate: 0 24vh;
+      /*  opacity: 20%; */
+    }
+
+    #restartButtonBack {
+      content: "ff";
+      height: 10vw;
+      width: 0px;
+      position: absolute;
+      left: 0px;
+      border-radius: 2vw;
+      background: white;
+      transition: all .9s ease;
+      z-index: -1;
     }
 
     @media screen and (min-width: 600px) {
@@ -314,47 +334,243 @@
       }
 
       #playerSignO {
-        font-size: 6vw;        
+        font-size: 6vw;
       }
+
       #turn {
-      height: 9vw;
-      font-size: 7vw;      
-    }
-    #game_container {
-      height: 75vw;
-      width: 75vw;
-      border-radius: 3.3vw; 
+        height: 9vw;
+        font-size: 7vw;
+      }
+
+      #game_container {
+        height: 75vw;
+        width: 75vw;
+        border-radius: 3.3vw;
+      }
+
+      .outSideBorder {
+        height: 75vw;
+        width: 75vw;
+      }
+
+      .cell_size {
+        font-size: 12vw;
+        font-weight: 400;
+      }
+
+      #playAgain {
+        height: 7vw;
+        width: 60vw;
+        font-size: 4vw;
+        font-weight: 500;
+        border-radius: 1.5vw;
+        translate: 0 20vh;
+      }
+
+      #restart {
+        height: 6vw;
+        width: 60vw;
+        font-size: 4vw;
+        font-weight: 500;
+        border-radius: 1.5vw;
+        translate: 0 10vh;
+      }
+
+
+
     }
 
-    .outSideBorder {
-      height: 75vw;
-      width: 75vw;
+    @media screen and (min-width: 750px) {
+      :root {
+        --borderWidth: 2vw;
+      }
+
+      #body {
+        padding-block: 5vw;
+        padding-bottom: 8vw;
+      }
+
+      #playerNameContainer {
+        height: 14vw;
+        width: 90vw;
+      }
+
+      .players {
+        width: 32vw;
+        font-size: 3vw;
+        font-weight: 800;
+      }
+
+      #playerSignX {
+        font-size: 4vw;
+      }
+
+      #playerSignO {
+        font-size: 4vw;
+      }
+
+      #turn {
+        height: 8vw;
+        font-size: 6vw;
+      }
+
+      #turnSign {
+        margin-right: 2vw;
+        font-size: 6vw;
+      }
+
+      #game_container {
+        height: 60vw;
+        width: 60vw;
+      }
+
+      .outSideBorder {
+        height: 60vw;
+        width: 60vw;
+        top: -2vw;
+        left: -2vw;
+      }
+
+      .cell_size {
+        font-size: 10vw;
+        font-weight: 400;
+      }
+
+      #playAgain {
+        height: 7vw;
+        width: 40vw;
+        margin-top: 1vw;
+        font-size: 4vw;
+        font-weight: 500;
+      }
+
+      #restart {
+        height: 7vw;
+        width: 40vw;
+        font-size: 4vw;
+        font-weight: 500;
+      }
     }
-    .cell_size {
-      font-size: 12vw;
-      font-weight: 400;
+
+    @media screen and (min-width: 850px) {
+      :root {
+        --borderWidth: 2vw;
+      }
+
+      #body {
+        padding-block: 4vw;
+        padding-bottom: 4vw;
+      }
+
+      #playerNameContainer {
+        height: 10vw;
+        width: 85vw;
+      }
+
+      .players {
+        width: 30vw;
+        padding-top: .4vw;
+        padding-bottom: 1vw;
+        font-size: 2.5vw;
+        font-weight: 800;
+      }
+
+      #game_container {
+        height: 55vw;
+        width: 55vw;
+      }
+
+      .outSideBorder {
+        height: 55vw;
+        width: 55vw;
+      }
+
+      .cell_size {
+        font-size: 8vw;
+      }
+
+      #playAgain {
+        height: 6.5vw;
+        margin-top: 2vw;
+        font-size: 3.5vw;
+      }
+
+      #restart {
+        height: 6.5vw;
+        font-size: 3.5vw;
+      }
     }
 
-    #playAgain {
-      height: 7vw;
-      width: 60vw;
-      font-size: 4vw;
-      font-weight: 500;
-      border-radius: 1.5vw;
-      translate: 0 20vh;
-    }
+    @media screen and (min-width: 1050px) {
+      :root {
+        --borderWidth: 1vw;
+      }
 
-    #restart {
-      height: 6vw;
-      width: 60vw;
-      font-size: 4vw;
-      font-weight: 500;
-      border-radius: 1.5vw;
-      translate: 0 10vh;
-    }
+      #body {
+        padding-block: 5vw;
+        padding-bottom: 8vw;
+      }
 
+      #playerNameContainer {
+        height: 14vw;
+        width: 90vw;
+      }
 
+      .players {
+        width: 32vw;
+        font-size: 3vw;
+        font-weight: 800;
+      }
 
+      #playerSignX {
+        font-size: 4vw;
+      }
+
+      #playerSignO {
+        font-size: 4vw;
+      }
+
+      #turn {
+        height: 8vw;
+        font-size: 6vw;
+      }
+
+      #turnSign {
+        margin-right: 2vw;
+        font-size: 6vw;
+      }
+
+      #game_container {
+        height: 60vw;
+        width: 60vw;
+      }
+
+      .outSideBorder {
+        height: 60vw;
+        width: 60vw;
+        top: -1vw;
+        left: -1vw;
+      }
+
+      .cell_size {
+        font-size: 10vw;
+        font-weight: 400;
+      }
+
+      #playAgain {
+        height: 7vw;
+        width: 40vw;
+        margin-top: 1vw;
+        font-size: 4vw;
+        font-weight: 500;
+      }
+
+      #restart {
+        height: 7vw;
+        width: 40vw;
+        font-size: 4vw;
+        font-weight: 500;
+      }
     }
   </style>
 
@@ -393,7 +609,632 @@
       <div id="outSideLeftBorder" class="outSideBorder"></div>
     </div>
     <div id="playAgain">Play Again</div>
-    <div id="restart">Restart Game</div>
+
+    <div id="restart">
+      <div id="restartButtonBack"></div>
+      Restart Game
+    </div>
+  </div>
+  <script src="Tic Tac 01.js"></script>
+
+</body>
+
+</html><html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Game</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+    /* font-family: "Mochiy Pop P One", sans-serif; */
+
+
+    :root {
+      --playerCardBg: #3c4b67;
+      --cellBorderColor: #3e4d6a;
+      --boardBorderColor: #3e4d6a;
+      --borderWidth: 3vw;
+      --borderWidth-2: 2vw;
+      --X_piece_color: #5fb544;
+      --X_piece_color_low: #5eb54451;
+      --O_piece_color: #fa7530;
+      --O_piece_color_low: #fa733047;
+      --piece_font_style: "Mochiy Pop P One", sans-serif;
+      --bodyColor: #232c46;
+      --playerBorderSize: 0.5vw;
+      --playerActiveBorderColor: #aaaaaa;
+      --restartBtnDefaultBg: #4f566b;
+      --restartBtnDefaultTextColor: #00000075;
+
+    }
+
+    * {
+      border: 0px;
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    #body {
+      height: 100%;
+      width: 100%;
+      margin-bottom: 0px;
+      padding-block: 8vw;
+      background: var(--bodyColor);
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      border: 0px solid red;
+    }
+
+    #playerNameContainer {
+      height: 20vw;
+      width: 100vw;
+      margin-top: 0vw;
+      padding-inline: 5vw;
+      border: 0px solid red;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .players {
+      height: fit-content;
+      width: 35vw;
+      padding-block: 1.5vw;
+      padding-inline: 3vw;
+      background: var(--playerCardBg);
+      /* border: .1vw solid #aaaaaa;*/
+      border-radius: 2vw;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 4.5vw;
+      font-weight: 800;
+      color: white;
+    }
+
+    #player1 {
+      border: var(--playerBorderSize) solid var(--playerActiveBorderColor);
+    }
+
+    #player2 {
+      border: var(--playerBorderSize) solid #38383800;
+    }
+
+    #playerSignX {
+      width: 100%;
+      font-size: 7vw;
+      color: var(--X_piece_color);
+      font-family: var(--piece_font_style);
+    }
+
+    #playerSignO {
+      width: 100%;
+      font-size: 8vw;
+      color: var(--O_piece_color);
+      font-family: var(--piece_font_style);
+    }
+
+    #X_win_count {
+      text-align: right;
+      width: 12vw;
+      border: 0px solid red;
+      letter-spacing: .6vw;
+    }
+
+    #O_win_count {
+      text-align: right;
+      width: 12vw;
+      border: 0px solid red;
+      letter-spacing: .6vw;
+    }
+
+    #turn {
+      height: 9vw;
+      display: flex;
+      margin-top: 0vw;
+      align-items: center;
+      border: 0px solid red;
+      display: flex;
+      overflow: hidden;
+      font-size: 8vw;
+      font-weight: 800;
+      color: white;
+    }
+
+    #turnSign {
+      margin-right: 3vw;
+      border: 0px solid red;
+      color: var(--X_piece_color);
+      font-family: var(--piece_font_style);
+      translate: 0vw -1.2vw;
+      /* translate: 0vw 7vw; */
+    }
+
+    #turnOrWin {
+      border: 0px solid #091ef6;
+    }
+
+    #game_container {
+      height: 90vw;
+      width: 90vw;
+      margin-top: 0vw;
+      display: grid;
+      grid-template-rows: 1fr .95fr 1fr;
+      grid-template-columns: 1fr .95fr 1fr;
+      gap: 0px;
+      border-radius: 3vw;
+      border: var(--borderWidth) solid #ffffff00;
+      position: relative;
+      z-index: 1;
+    }
+
+    .outSideBorder {
+      height: 90vw;
+      width: 90vw;
+      top: -3vw;
+      /* top: var(--borderWidth);*/
+      /* left: var(--borderWidth);*/
+      left: -3vw;
+      border-radius: var(--borderWidth);
+      position: absolute;
+      border: 0px solid red;
+      z-index: -1;
+    }
+
+    #outSideTopBorder {
+      translate: -34vw -30vw;
+      transform-origin: top left;
+      transform: rotate(-90deg);
+      transition: all 1s ease;
+      border-top: var(--borderWidth) solid var(--boardBorderColor);
+    }
+
+    #outSideRightBorder {
+      translate: 34vw -30vw;
+      transform-origin: top right;
+      transform: rotate(-80deg);
+      transition: all 1.1s ease;
+      border-right: var(--borderWidth) solid var(--boardBorderColor);
+    }
+
+    #outSideBottomBorder {
+      translate: 34vw 034vw;
+      transform-origin: bottom right;
+      transform: rotate(-80deg);
+      transition: all 1.2s ease;
+      border-bottom: var(--borderWidth) solid var(--boardBorderColor);
+
+    }
+
+    #outSideLeftBorder {
+      translate: -34vw 30vw;
+      transform-origin: bottom left;
+      transform: rotate(-80deg);
+      transition: all 1.3s ease;
+      border-left: var(--borderWidth) solid var(--boardBorderColor);
+    }
+
+    .cell_size {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4b4b4bc6;
+      font-family: var(--piece_font_style);
+      font-size: 15vw;
+      font-weight: 400;
+      border: 0px solid red;
+    }
+
+    #cell_1 {
+      border-bottom: var(--borderWidth) solid var(--cellBorderColor);
+      border-right: var(--borderWidth) solid var(--cellBorderColor);
+      translate: -34vw -30vw;
+      transition: all .6s ease;
+    }
+
+    #cell_2 {
+      border-bottom: var(--borderWidth) solid var(--cellBorderColor);
+      translate: 0vw -95vw;
+      transition: all .3s ease;
+      /* position: relative;
+      bottom: 42vh; */
+    }
+
+    #cell_3 {
+      border-bottom: var(--borderWidth) solid var(--cellBorderColor);
+      border-left: var(--borderWidth) solid var(--cellBorderColor);
+      translate: 34vw -30vw;
+      transition: all .7s ease;
+    }
+
+    #cell_4 {
+      border-right: var(--borderWidth) solid var(--cellBorderColor);
+      translate: -34vw 0vw;
+      transition: all .4s ease;
+    }
+
+    #cell_6 {
+      border-left: var(--borderWidth) solid var(--cellBorderColor);
+      translate: 34vw 0vw;
+      transition: all .5s ease;
+    }
+
+    #cell_7 {
+      border-top: var(--borderWidth) solid var(--cellBorderColor);
+      border-right: var(--borderWidth) solid var(--cellBorderColor);
+      translate: -34vw 30vw;
+      transition: all .9s ease;
+    }
+
+    #cell_8 {
+      border-top: var(--borderWidth) solid var(--cellBorderColor);
+      translate: 0vw 82vw;
+      transition: all .6s ease;
+    }
+
+    #cell_9 {
+      border-top: var(--borderWidth) solid var(--cellBorderColor);
+      border-left: var(--borderWidth) solid var(--cellBorderColor);
+      translate: 34vw 30vw;
+      transition: all .8s ease;
+    }
+
+    #playAgain {
+      height: 10vw;
+      width: 90vw;
+      margin-top: 1vw;
+      padding-inline: 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5vw;
+      font-weight: 600;
+      color: var(--restartBtnDefaultTextColor);
+      background: var(--restartBtnDefaultBg);
+      border-radius: 2vw;
+      translate: 0 24vh;
+    /*  opacity: 20%; */
+    }
+
+    #restart {
+      height: 10vw;
+      width: 90vw;
+      margin-top: 0vw;
+      padding-inline: 5vw;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5vw;
+      font-weight: 600;
+      color: var(--restartBtnDefaultTextColor);
+      background: var(--restartBtnDefaultBg);
+      border-radius: 2vw;
+      translate: 0 24vh;
+      /*  opacity: 20%; */
+    }
+
+    #restartButtonBack {
+      content: "ff";
+      height: 10vw;
+      width: 0px;
+      position: absolute;
+      left: 0px;
+      border-radius: 2vw;
+      background: white;
+      transition: all .9s ease;
+      z-index: -1;
+    }
+
+    @media screen and (min-width: 600px) {
+      #body {
+        padding-block: 8vw;
+      }
+
+      #playerNameContainer {
+        height: 15vw;
+        width: 95vw;
+      }
+
+      .players {
+        width: 35vw;
+        font-size: 4vw;
+        font-weight: 800;
+      }
+
+      #playerSignX {
+        font-size: 5vw;
+      }
+
+      #playerSignO {
+        font-size: 6vw;
+      }
+
+      #turn {
+        height: 9vw;
+        font-size: 7vw;
+      }
+
+      #game_container {
+        height: 75vw;
+        width: 75vw;
+        border-radius: 3.3vw;
+      }
+
+      .outSideBorder {
+        height: 75vw;
+        width: 75vw;
+      }
+
+      .cell_size {
+        font-size: 12vw;
+        font-weight: 400;
+      }
+
+      #playAgain {
+        height: 7vw;
+        width: 60vw;
+        font-size: 4vw;
+        font-weight: 500;
+        border-radius: 1.5vw;
+        translate: 0 20vh;
+      }
+
+      #restart {
+        height: 6vw;
+        width: 60vw;
+        font-size: 4vw;
+        font-weight: 500;
+        border-radius: 1.5vw;
+        translate: 0 10vh;
+      }
+
+
+
+    }
+
+    @media screen and (min-width: 750px) {
+      :root {
+        --borderWidth: 2vw;
+      }
+
+      #body {
+        padding-block: 5vw;
+        padding-bottom: 8vw;
+      }
+
+      #playerNameContainer {
+        height: 14vw;
+        width: 90vw;
+      }
+
+      .players {
+        width: 32vw;
+        font-size: 3vw;
+        font-weight: 800;
+      }
+
+      #playerSignX {
+        font-size: 4vw;
+      }
+
+      #playerSignO {
+        font-size: 4vw;
+      }
+
+      #turn {
+        height: 8vw;
+        font-size: 6vw;
+      }
+
+      #turnSign {
+        margin-right: 2vw;
+        font-size: 6vw;
+      }
+
+      #game_container {
+        height: 60vw;
+        width: 60vw;
+      }
+
+      .outSideBorder {
+        height: 60vw;
+        width: 60vw;
+        top: -2vw;
+        left: -2vw;
+      }
+
+      .cell_size {
+        font-size: 10vw;
+        font-weight: 400;
+      }
+
+      #playAgain {
+        height: 7vw;
+        width: 40vw;
+        margin-top: 1vw;
+        font-size: 4vw;
+        font-weight: 500;
+      }
+
+      #restart {
+        height: 7vw;
+        width: 40vw;
+        font-size: 4vw;
+        font-weight: 500;
+      }
+    }
+
+    @media screen and (min-width: 850px) {
+      :root {
+        --borderWidth: 2vw;
+      }
+
+      #body {
+        padding-block: 4vw;
+        padding-bottom: 4vw;
+      }
+
+      #playerNameContainer {
+        height: 10vw;
+        width: 85vw;
+      }
+
+      .players {
+        width: 30vw;
+        padding-top: .4vw;
+        padding-bottom: 1vw;
+        font-size: 2.5vw;
+        font-weight: 800;
+      }
+
+      #game_container {
+        height: 55vw;
+        width: 55vw;
+      }
+
+      .outSideBorder {
+        height: 55vw;
+        width: 55vw;
+      }
+
+      .cell_size {
+        font-size: 8vw;
+      }
+
+      #playAgain {
+        height: 6.5vw;
+        margin-top: 2vw;
+        font-size: 3.5vw;
+      }
+
+      #restart {
+        height: 6.5vw;
+        font-size: 3.5vw;
+      }
+    }
+
+    @media screen and (min-width: 1050px) {
+      :root {
+        --borderWidth: 1vw;
+      }
+
+      #body {
+        padding-block: 5vw;
+        padding-bottom: 8vw;
+      }
+
+      #playerNameContainer {
+        height: 14vw;
+        width: 90vw;
+      }
+
+      .players {
+        width: 32vw;
+        font-size: 3vw;
+        font-weight: 800;
+      }
+
+      #playerSignX {
+        font-size: 4vw;
+      }
+
+      #playerSignO {
+        font-size: 4vw;
+      }
+
+      #turn {
+        height: 8vw;
+        font-size: 6vw;
+      }
+
+      #turnSign {
+        margin-right: 2vw;
+        font-size: 6vw;
+      }
+
+      #game_container {
+        height: 60vw;
+        width: 60vw;
+      }
+
+      .outSideBorder {
+        height: 60vw;
+        width: 60vw;
+        top: -1vw;
+        left: -1vw;
+      }
+
+      .cell_size {
+        font-size: 10vw;
+        font-weight: 400;
+      }
+
+      #playAgain {
+        height: 7vw;
+        width: 40vw;
+        margin-top: 1vw;
+        font-size: 4vw;
+        font-weight: 500;
+      }
+
+      #restart {
+        height: 7vw;
+        width: 40vw;
+        font-size: 4vw;
+        font-weight: 500;
+      }
+    }
+  </style>
+
+<body>
+  <div id="body">
+
+    <div id="playerNameContainer">
+      <div id="player1" class="players">
+        <div id="playerSignX">X</div>
+        Player : <p id="X_win_count">0/0</p>
+      </div>
+      <div id="player2" class="players">
+        <div id="playerSignO">O</div>
+        Player : <p id="O_win_count">0/0</p>
+      </div>
+    </div>
+
+    <div id="turn">
+      <P id="turnSign">X</P>
+      <p id="turnOrWin">Turn</p>
+    </div>
+
+    <div id="game_container">
+      <div id="cell_1" class="cell_size"></div>
+      <div id="cell_2" class="cell_size"></div>
+      <div id="cell_3" class="cell_size"></div>
+      <div id="cell_4" class="cell_size"></div>
+      <div id="cell_5" class="cell_size"></div>
+      <div id="cell_6" class="cell_size"></div>
+      <div id="cell_7" class="cell_size"></div>
+      <div id="cell_8" class="cell_size"></div>
+      <div id="cell_9" class="cell_size"></div>
+      <div id="outSideTopBorder" class="outSideBorder"></div>
+      <div id="outSideRightBorder" class="outSideBorder"></div>
+      <div id="outSideBottomBorder" class="outSideBorder"></div>
+      <div id="outSideLeftBorder" class="outSideBorder"></div>
+    </div>
+    <div id="playAgain">Play Again</div>
+
+    <div id="restart">
+      <div id="restartButtonBack"></div>
+      Restart Game
+    </div>
   </div>
   <script src="Tic Tac 01.js"></script>
 
