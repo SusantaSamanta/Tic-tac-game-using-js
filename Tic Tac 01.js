@@ -437,13 +437,35 @@ const playerWinSave = () => {
 const actionForRestart = () => {
   location.reload();
 }
+let timeOutId;
 
-restart.addEventListener('touchstart', () => {
-  setTimeout(actionForRestart, 1000);
-  restartButtonBack.style.width = "100%"
-  restartButtonBack.style.transition = "all 1s ease";
-  restart.style.color = "black"
+restart.addEventListener('mousedown', () => {
+  makeRestartBtnStyleActive();
 });
+restart.addEventListener('touchstart', () => {
+  makeRestartBtnStyleActive();
+});
+
+restart.addEventListener('mouseup', () => {
+  makeRestartBtnStyleDefault();
+});
+restart.addEventListener('touchend', () => {
+  makeRestartBtnStyleDefault();
+});
+
+
+const makeRestartBtnStyleActive = () => {
+  timeOutId = setTimeout(actionForRestart, 1000);
+  restartButtonBack.style.width = "100%";
+  restartButtonBack.style.transition = "all 1s ease";
+  restart.style.color = "black";
+}
+const makeRestartBtnStyleDefault = () => {
+  clearTimeout(timeOutId);
+  restartButtonBack.style.width = "0%";
+  restartButtonBack.style.transition = "all .2s ease";
+  restart.style.color = "var(--restartBtnDefaultTextColor)";
+}
 
 
 
